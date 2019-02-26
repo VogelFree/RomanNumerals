@@ -1,18 +1,17 @@
 const assert = require("chai").assert
 const parseArabicToRoman = require("../roman-numerals").parseArabicToRoman
 
-test("1 to I", () =>
-{
-  const input = 1
-  const expectedOutput = "I"
-  const output = parseArabicToRoman(input)
-  assert.equal(expectedOutput, output)
-})
+const testData =
+[
+  { input: 1, expectedOutput: "I" },
+  { input: 5, expectedOutput: "V" },
+]
 
-test("5 to V", () =>
+testData.forEach(({input, expectedOutput}) =>
 {
-  const input = 5
-  const expectedOutput = "V"
-  const output = parseArabicToRoman(input)
-  assert.equal(output, expectedOutput)
+  test("" + input + " to " + expectedOutput, () =>
+  {
+    const output = parseArabicToRoman(input)
+    assert.equal(output, expectedOutput)
+  })
 })
